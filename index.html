@@ -85,51 +85,52 @@
 
             <button onclick="generateAnswer()">Ask AI</button>
         </div>
+        <div id="qaSection">
+        </div>
     </div>
 
 
-</body>
 
-<script>
-    function generateAnswer() {
-        const userQuestion = document.getElementById("questionInput").value;
+    <script>
+        function generateAnswer() {
+            const userQuestion = document.getElementById("questionInput").value;
 
-        if (userQuestion.trim() === "") {
-            alert("Please enter a question!");
-            return;
-        }
+            if (userQuestion.trim() === "") {
+                alert("Please enter a question!");
+                return;
+            }
 
-        const answer = getAIAnswer(userQuestion)
-        const qaSection = document.getElementById("qaSection");
-        const questionElement = document.createElement("div");
-        qaCard.classname = "qa-card";
-        qaCard.innerHTML = `
+            const answer = getAIAnswer(userQuestion)
+            const qaSection = document.getElementById("qaSection");
+            const qaCard = document.createElement("div");
+            qaCard.className = "qa-card";
+            qaCard.innerHTML = `
                 <h3>Question:${userQuestion}</h3>
-                <p><strong>Answer:</strong>${answer}</p>
+                <p><strong> AI's Answer:</strong>${answer}</p>
             `;
-        qaSection.appendChild(qaCard);
-        document.getElementById("questionInput").value = "";
-    }
-    function getAIanswer(question) {
-        const responses = {
+            qaSection.appendChild(qaCard);
+            document.getElementById("questionInput").value = "";
+        }
+        function getAIAnswer(question) {
+            const responses = {
 
 
-            "What is Al?": "Al is the simulation of human intelligence processes by machines, especially computer systems.",
+                "What is Al?": "Al is the simulation of human intelligence processes by machines, especially computer systems.",
 
-            "How does machine learning work?": "Machine learning algorithms use statistical methods to enable systems to learn from data and make predictions or decisions.",
+                "How does machine learning work?": "Machine learning algorithms use statistical methods to enable systems to learn from data and make predictions or decisions.",
 
-            "What is deep learning?": "Deep learning is a subset of machine learning where artificial neural networks learn from vast amounts of data.",
+                "What is deep learning?": "Deep learning is a subset of machine learning where artificial neural networks learn from vast amounts of data.",
 
-            "Hello": "Hi There",
+                "Hello": "Hi There",
 
-            "How are you?": "I'm Fine and you.",
+                "How are you?": "I'm Fine and you.",
 
+            };
+
+            return responses[question] || "Sorry, I don't have an answer for that yet. But I am learning!";
         }
 
-        return responses[question]|| "Sorry, I don't have an answer for that yet. But I am learning!";
-    }
-
-</script>
+    </script>
 </body>
 
 </html>
